@@ -1,0 +1,9 @@
+name: mecab
+version: 0.1.0
+
+authors:
+  - lpm11
+
+description: MeCab binding for Crystal language.
+
+license: MIT
