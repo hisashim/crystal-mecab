@@ -1,7 +1,16 @@
 require "../spec_helper"
 
-def ipadic()
-  return `mecab-config --dicdir`.chomp() + "/ipadic"
+def ipadic
+  # Basename of IPA dictionary encoded in UTF-8 is `ipadic-utf8` in
+  # Debian-based systems, while it is `ipadic` in many other operating
+  # environments.
+  basename =
+    if File.exists? "/etc/debian_version"
+      "ipadic-utf8"
+    else
+      "ipadic"
+    end
+  Path[`mecab-config --dicdir`.chomp].join(basename)
 end
 
 def initialize_mecab(arg)
