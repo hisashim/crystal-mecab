@@ -1,9 +1,9 @@
 module MeCab
   @[Link(ldflags: "`mecab-config --libs`")]
   lib LibMeCab
-    type MeCab_T                 = Void
-    type MeCab_Model_T           = Void
-    type MeCab_Lattice_T         = Void
+    type MeCab_T = Void
+    type MeCab_Model_T = Void
+    type MeCab_Lattice_T = Void
 
     # Parameters for MeCab_Dictionary_Info_T.type
     MECAB_SYS_DIC = 0
@@ -12,13 +12,13 @@ module MeCab
 
     struct MeCab_Dictionary_Info_T
       filename : UInt8*
-      charset  : UInt8*
-      size     : UInt32
-      type     : Int32
-      lsize    : UInt32
-      rsize    : UInt32
-      version  : UInt16
-      next     : MeCab_Dictionary_Info_T*
+      charset : UInt8*
+      size : UInt32
+      type : Int32
+      lsize : UInt32
+      rsize : UInt32
+      version : UInt16
+      next : MeCab_Dictionary_Info_T*
     end
 
     struct MeCab_Path_T
@@ -26,8 +26,8 @@ module MeCab
       rnext : MeCab_Path_T*
       lnode : MeCab_Node_T*
       lnext : MeCab_Path_T*
-      cost  : Int32
-      prob  : Float32
+      cost : Int32
+      prob : Float32
     end
 
     # Parameters for MeCab_Node_T.stat
@@ -38,35 +38,35 @@ module MeCab
     MECAB_EON_NODE = 4
 
     struct MeCab_Node_T
-      prev      : MeCab_Node_T*
-      next      : MeCab_Node_T*
-      enext     : MeCab_Node_T*
-      bnext     : MeCab_Node_T*
-      rpath     : MeCab_Path_T*
-      lpath     : MeCab_Path_T*
-      surface   : UInt8*
-      feature   : UInt8*
-      id        : UInt32
-      length    : UInt16
-      rlength   : UInt16
-      rcAttr    : UInt16
-      lcAttr    : UInt16
-      posid     : UInt16
+      prev : MeCab_Node_T*
+      next : MeCab_Node_T*
+      enext : MeCab_Node_T*
+      bnext : MeCab_Node_T*
+      rpath : MeCab_Path_T*
+      lpath : MeCab_Path_T*
+      surface : UInt8*
+      feature : UInt8*
+      id : UInt32
+      length : UInt16
+      rlength : UInt16
+      rcAttr : UInt16
+      lcAttr : UInt16
+      posid : UInt16
       char_type : UInt8
-      stat      : UInt8
-      isbest    : UInt8
-      alpha     : Float32
-      beta      : Float32
-      prob      : Float32
-      wcost     : Int16
-      cost      : Int64
+      stat : UInt8
+      isbest : UInt8
+      alpha : Float32
+      beta : Float32
+      prob : Float32
+      wcost : Int16
+      cost : Int64
     end
 
     # Parameters for lattice request_type
-    MECAB_ONE_BEST         = 1
-    MECAB_NBEST            = 2
-    MECAB_PARTIAL          = 4
-    MECAB_MARGINAL_PROB    = 8
+    MECAB_ONE_BEST         =  1
+    MECAB_NBEST            =  2
+    MECAB_PARTIAL          =  4
+    MECAB_MARGINAL_PROB    =  8
     MECAB_ALTERNATIVE      = 16
     MECAB_ALL_MORPHS       = 32
     MECAB_ALLOCATE_SENTENC = 64
@@ -78,7 +78,7 @@ module MeCab
 
     fun mecab_new(argc : Int32, argv : UInt8**) : MeCab_T*
     fun mecab_new2(arg : UInt8**) : MeCab_T*
-    fun mecab_version() : UInt8*
+    fun mecab_version : UInt8*
     fun mecab_strerror(mecab : MeCab_T*) : UInt8*
     fun mecab_destroy(mecab : MeCab_T*) : Void
 
@@ -111,7 +111,7 @@ module MeCab
 
     fun mecab_dictionary_info(mecab : MeCab_T*) : MeCab_Dictionary_Info_T*
 
-    fun mecab_lattice_new() : MeCab_Lattice_T*
+    fun mecab_lattice_new : MeCab_Lattice_T*
     fun mecab_lattice_destroy(lattice : MeCab_Lattice_T*) : Void
     fun mecab_lattice_clear(lattice : MeCab_Lattice_T*) : Void
     fun mecab_lattice_is_available(lattice : MeCab_Lattice_T*) : Int32
